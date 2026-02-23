@@ -68,8 +68,25 @@ class PatientRegistry:
         return
 
     def delete_patient(self, patient_id:str) -> bool:
+        for patient in self.patient_registry.items():
+            if patient_id in self.patient_registry:
+                print("Patient about to be deleted")
+                conformation = input("Continue, Y/N?: ")
+                if conformation.lower() == "y":
+                    print("")
+                    print("Patient deleted")
+                    self.patient_registry.pop(patient_id)
+                    return True
+                else:
+                    print("Patient deletion cancelled!")
+                    return False
 
-        return
+            else:
+                print("")
+                print("Patient does not exist")
+                print("")
+
+        return False
 
     def list_all_patients(self):
         i=0
@@ -111,11 +128,14 @@ class PatientRegistry:
 
         elif choice == "3":
             print("")
-            self.patient_id= input("Enter patient ID to update (Starts with 'P-'): ")
+            self.patient_id= input("Enter patient ID to update patient name (Starts with 'P-'): ")
             self.new_name= input("Enter patient's updated name: ")
             self.update_patient_name(self.patient_id, self.new_name)
 
         elif choice == "4":
+            print("")
+            self.patient_id= input("Enter patient ID to delete patient record (Starts with 'P-'): ")
+
             self.delete_patient(self.patient_id)
 
         elif choice == "5":
