@@ -56,6 +56,15 @@ class PatientRegistry:
 
     def update_patient_name(self,patient_id:str, new_name: str) -> dict:
 
+        for patient in self.patient_registry.items():
+            if patient_id in self.patient_registry:
+                self.patient_registry[patient_id]["name"] = new_name
+                print("")
+                print("Name Changed")
+            else:
+                print("")
+                print("Patient does not exist")
+                print("")
         return
 
     def delete_patient(self, patient_id:str) -> bool:
@@ -83,7 +92,7 @@ class PatientRegistry:
     def draw_app_menu(self):
         print("1. Register a new patient")
         print("2. Retrieve patient ID")
-        print("3. Update patient name (ID change NOT permitted")
+        print("3. Update patient name (ID change NOT permitted)")
         print("4. Delete patient ID")
         print("5. List all patients")
         print("6. Go back to main menu")
@@ -101,7 +110,10 @@ class PatientRegistry:
             self.get_patient(self.patient_id)
 
         elif choice == "3":
-            self.update_patient_name(self.patient_id)
+            print("")
+            self.patient_id= input("Enter patient ID to update (Starts with 'P-'): ")
+            self.new_name= input("Enter patient's updated name: ")
+            self.update_patient_name(self.patient_id, self.new_name)
 
         elif choice == "4":
             self.delete_patient(self.patient_id)
