@@ -14,7 +14,7 @@ class PatientRegistry:
         self.id_increment = 101
         self.all_patient_id = []
 
-        #Entry point
+        #Entry point for all other functions is draw_main_menu()
         while self.running:
             self.draw_main_menu()
 
