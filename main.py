@@ -1,16 +1,33 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+#Kody Graham
+#02/22/2026
+#Simple Patient Record System
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+class PatientRegistry:
+    def __init__(self):
+        self.patient_registry = {}
+        self.name = ""
+        self.patient_id = 0
+        self.new_name = ""
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
+
+    #Generates a unique ID and stores the patient
+    def register_patient(self,name: str) -> str:
+
+
+        return
+
+    #Returns patient data or an error if not found
+    def get_patient(self, patient_id:str) -> dict:
+        return
+
+    def update_patient_name(self,patient_id:str, new_name: str) -> dict:
+
+        return
+
+    def delete_patient(self, patient_id:str) -> bool:
+        return
+
+    def draw_menu(self):
+        return
