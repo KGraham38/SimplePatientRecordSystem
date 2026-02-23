@@ -38,7 +38,7 @@ class PatientRegistry:
             print("Patient does not exist")
             print("")
 
-        return
+        return self.patient_registry
 
     def update_patient_name(self,patient_id:str, new_name: str) -> dict:
 
@@ -51,7 +51,7 @@ class PatientRegistry:
                 print("")
                 print("Patient does not exist")
                 print("")
-        return
+        return self.patient_registry
 
     def delete_patient(self, patient_id:str) -> bool:
         for patient in self.patient_registry.items():
