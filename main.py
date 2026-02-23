@@ -3,6 +3,7 @@
 #Simple Patient Record System
 
 
+#Main class for our Simple Patient Record System
 class PatientRegistry:
     def __init__(self):
         self.patient_registry = {}
@@ -13,6 +14,7 @@ class PatientRegistry:
         self.id_increment = 101
         self.all_patient_id = []
 
+        #Entry point
         while self.running:
             self.draw_main_menu()
 
@@ -39,6 +41,8 @@ class PatientRegistry:
             print("")
 
         return self.patient_registry
+
+    #All other functions below are pretty self-explanatory
 
     def update_patient_name(self,patient_id:str, new_name: str) -> dict:
 
@@ -102,7 +106,7 @@ class PatientRegistry:
         choice = input("Enter your choice: ")
         choices = ["1", "2", "3", "4", "5", "6", "7"]
 
-        #Not a fan or if else chains but for simplicity will use on here
+        #Not a fan or if else chains but for simplicity will use on here if i add a real GUI i will use a click listener instead
         if choice == "1":
             self.name = input("Enter new patient's name: ")
             self.register_patient(self.name)
@@ -137,9 +141,9 @@ class PatientRegistry:
             print("")
             self.draw_app_menu()
 
+    #Simple menu to start may use pygame to generate a true UI menu later
     def draw_main_menu(self):
 
-        #Simple menu to start may use pygame to generate a true UI menu
         print("")
         print("Welcome to the Patient Registry!")
         print("")
