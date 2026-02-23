@@ -18,9 +18,6 @@ class PatientRegistry:
 
         SystemExit(0)
 
-
-
-
     #Generates a unique ID and stores the patient
     def register_patient(self,name: str) -> str:
 
@@ -30,17 +27,6 @@ class PatientRegistry:
         self.id_increment +=1
 
         return str(id)
-
-
-
-
-
-
-
-
-
-
-        return
 
     #Returns patient data or an error if not found
     def get_patient(self, patient_id:str) -> dict:
@@ -103,8 +89,6 @@ class PatientRegistry:
                 print("Patient #: " + str(i))
                 print("Patient Info: " + str(record))
                 print("")
-
-
 
     def draw_app_menu(self):
         print("1. Register a new patient")
@@ -185,9 +169,6 @@ class PatientRegistry:
             print("")
 
         return
-
-
-
 
 if __name__ == "__main__":
     app = PatientRegistry()
