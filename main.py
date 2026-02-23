@@ -6,6 +6,7 @@
 #Main class for our Simple Patient Record System
 class PatientRegistry:
     def __init__(self):
+
         self.patient_registry = {}
         self.name = ""
         self.patient_id = ""
