@@ -2,8 +2,24 @@
 #02/22/2026
 #Simple Patient Record System
 
+import PatientRegistry
 
 
+class Main:
+    def __init__(self):
+        self.running = True
+        self.registry = PatientRegistry
+        self.name = ""
+        self.patient_id = ""
+        self.new_name = ""
+        self.running = True
+        self.all_patient_id = []
+
+        # Entry point for all other functions is draw_main_menu()
+        while self.running:
+            self.draw_main_menu()
+
+        SystemExit(0)
 
     def draw_app_menu(self):
         print("##############################################################")
@@ -26,8 +42,14 @@
 
         #Not a fan or if else chains but for simplicity will use on here if i add a real GUI i will use a click listener instead
         if choice == "1":
-            self.name = input("Enter new patient's name: ")
-            self.name = self.name.title()
+            PatientRegistry.name = input("Enter new patient's name: ")
+            PatientRegistry.name = PatientRegistry.name.title()
+            print("")
+            print("#####################################")
+            print(f"Patient {name} registration successful!")
+            print("#####################################")
+            print("")
+            print("Returning to main menu")
 
             self.register_patient(self.name)
 
@@ -45,6 +67,15 @@
                 print("#####################################")
                 print("")
             print("Returning to main menu")
+
+            if patient_id in self.patient_registry:
+                return self.patient_registry[patient_id]
+            else:
+                print("")
+                print("#####################################")
+                print("Patient does not exist")
+                print("#####################################")
+                print("")
 
 
         elif choice == "3":
@@ -72,6 +103,20 @@
                 else:
                     print("Returning to main menu")
 
+                    if patient_id in self.patient_registry:
+                        self.patient_registry[patient_id]["name"] = new_name
+                        print("")
+                        print("#####################################")
+                        print("Name Changed")
+                        print("#####################################")
+
+                    else:
+                        print("")
+                        print("#####################################")
+                        print("Patient does not exist")
+                        print("#####################################")
+                        print("")
+
         elif choice == "4":
             print("")
             self.patient_id= input("Enter patient ID to delete patient record (Starts with 'P-'): ")
@@ -80,10 +125,53 @@
             print("")
             print("Returning to main menu")
 
+                print(f"Patient {self.patient_registry[patient_id]["name"]} about to be deleted")
+                conformation = input("Continue, Y/N?: ")
+                if conformation.lower() == "y":
+                    print("")
+                    print("#####################################")
+                    print("Patient deleted")
+                    print("#####################################")
+
+                    self.patient_registry.pop(patient_id)
+                    return True
+                else:
+                    print("#####################################")
+                    print("Patient deletion cancelled!")
+                    print("#####################################")
+                    return False
+
+            else:
+                print("")
+                print("#####################################")
+                print("Patient does not exist")
+                print("#####################################")
+                print("")
+
         elif choice == "5":
             self.list_all_patients()
             print("")
             print("Returning to main menu")
+
+
+i = 0
+if self.patient_registry == {}:
+    print("")
+    print("#####################################")
+    print("Patient Registry is empty")
+    print("#####################################")
+    print("")
+
+    return
+else:
+    for patient, record in self.patient_registry.items():
+        i += 1
+        print("")
+        print("#####################################")
+        print("Patient #: " + str(i))
+        print("Patient Info: " + str(record))
+        print("#####################################")
+        print("")
 
         elif choice == "6":
             self.draw_main_menu()
