@@ -14,10 +14,10 @@ class PatientRegistry:
 
         patient_id = "P-" + str( self.id_increment)
 
-        self.patient_registry[id] = {"patient_id": id, "name": name}
+        self.patient_registry[patient_id] = {"patient_id": patient_id, "name": name}
         self.id_increment +=1
 
-        return str(id)
+        return patient_id
 
     #Returns patient data or an error if not found - REQ-2
     def get_patient(self, patient_id:str) -> dict | None:
