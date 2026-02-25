@@ -1,6 +1,8 @@
 #Kody Graham
 #02/22/2026
 #Simple Patient Record System
+#Class that will handle all of our menu logic and input validations
+
 
 from PatientRegistry import PatientRegistry
 
@@ -20,7 +22,7 @@ class Main:
             self.draw_main_menu()
 
 
-        SystemExit(0)
+        raise SystemExit(0)
 
     def draw_app_menu(self):
         app_menu_running = True
@@ -83,10 +85,10 @@ class Main:
                 self.patient_id= input("Enter patient ID to update patient name (Starts with 'P-'): ")
                 self.patient_id = self.patient_id.upper()
 
-                curr_name = None
+                curr_name = self.registy.get_patient_name(self.patient_id)
 
                 record = self.registry.get_patient(self.patient_id)
-                if record is not None:
+                if curr_name is not None:
                     curr_name = record["name"]
                 print("")
 
@@ -124,9 +126,9 @@ class Main:
                 self.patient_id= input("Enter patient ID to delete patient record (Starts with 'P-'): ")
                 self.patient_id = self.patient_id.upper()
 
-                record = self.registry.get_patient(self.patient_id)
-                if record is not None:
-                    print(f"Patient {record['name']} about to be deleted")
+                p_name = self.registry.get_patient(self.patient_id)
+                if p_name is not None:
+                    print(f"Patient {p_name['name']} about to be deleted")
                     conformation = input("Continue, Y/N?: ")
                     if conformation.lower() == "y":
                         patient_exist = self.registry.delete_patient(self.patient_id)
@@ -155,13 +157,12 @@ class Main:
             elif choice == "5":
 
                 all_patients = self.registry.list_all_patients()
-                if len(all_patients) == 0:
+                if all_patients is None:
                     print("")
                     print("#####################################")
                     print("Patient Registry is empty")
                     print("#####################################")
                     print("")
-
 
                 else:
                     i = 0
@@ -182,10 +183,11 @@ class Main:
             elif choice == "6":
                 print("")
                 print("Returning to main menu")
-                return
+                app_menu_running = False
 
             elif choice == "7":
-                app_menu_running = False
+
+                self.running = False
 
             else:
                 print("")

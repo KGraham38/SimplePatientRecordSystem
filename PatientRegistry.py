@@ -1,5 +1,7 @@
-#Main class for our Simple Patient Record System
-from typing import Any
+#Kody Graham
+#02/24/2026
+#Simple Patient Record System
+#Class for our Simple Patient Record System that will handle all access to registry
 
 
 class PatientRegistry:
@@ -46,5 +48,16 @@ class PatientRegistry:
 
         return False
 
-    def list_all_patients(self):
-        return list(self.patient_registry.values())
+    def list_all_patients(self) -> list[dict] | None:
+
+        patients = list(self.patient_registry.values())
+        if len(patients) == 0:
+            return None
+        return patients
+
+    #Extra helpers to keep access of our registry contained in this class
+    def get_patient_name(self, patient_id:str) -> str | None:
+        record = self.get_patient(patient_id)
+        if record is None:
+            return None
+        return record["name"]
