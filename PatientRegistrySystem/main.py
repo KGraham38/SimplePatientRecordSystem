@@ -193,7 +193,7 @@ class Main:
 
             else:
                 print("")
-                print("Please enter a valid choice: Single character between from a and g (do not include the . )")
+                print("Please enter a valid choice: Single character from a to g (do not include the . )")
                 print("")
 
 
