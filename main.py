@@ -52,7 +52,7 @@ class Main:
 
                 print("")
                 print("#####################################")
-                print(f"Patient {self.name} registration successful assigned id is: {id_generated}")
+                print(f"Patient {self.name} registration successful their assigned ID is: {id_generated}")
                 print("#####################################")
                 print("")
                 print("Returning to application menu")
@@ -85,11 +85,7 @@ class Main:
                 self.patient_id= input("Enter patient ID to update patient name (Starts with 'P-'): ")
                 self.patient_id = self.patient_id.upper()
 
-                curr_name = self.registy.get_patient_name(self.patient_id)
-
-                record = self.registry.get_patient(self.patient_id)
-                if curr_name is not None:
-                    curr_name = record["name"]
+                curr_name = self.registry.get_patient_name(self.patient_id)
                 print("")
 
                 if curr_name is not None:
@@ -108,27 +104,25 @@ class Main:
                             print("Updated Info: " + str(patient_exist))
                             print("#####################################")
 
-                        else:
-                            print("")
-                            print("#####################################")
-                            print("Patient does not exist")
-                            print("#####################################")
-                            print("")
-
-
-                        print("")
+                else:
+                    print("")
+                    print("#####################################")
+                    print("Patient does not exist")
+                    print("#####################################")
+                    print("")
+                    print("")
 
                 print("Returning to application menu")
-
+                print("")
 
             elif choice == "4":
                 print("")
                 self.patient_id= input("Enter patient ID to delete patient record (Starts with 'P-'): ")
                 self.patient_id = self.patient_id.upper()
 
-                p_name = self.registry.get_patient(self.patient_id)
+                p_name = self.registry.get_patient_name(self.patient_id)
                 if p_name is not None:
-                    print(f"Patient {p_name['name']} about to be deleted")
+                    print(f"Patient {p_name} about to be deleted")
                     conformation = input("Continue, Y/N?: ")
                     if conformation.lower() == "y":
                         patient_exist = self.registry.delete_patient(self.patient_id)
@@ -188,6 +182,7 @@ class Main:
             elif choice == "7":
 
                 self.running = False
+                app_menu_running = False
 
             else:
                 print("")
