@@ -29,13 +29,13 @@ class Main:
         while app_menu_running:
             print("##############################################################")
             print("#                                                            #")
-            print("# 1. Register a new patient                                  #")
-            print("# 2. Retrieve patient ID                                     #")
-            print("# 3. Update patient name (ID change NOT permitted)           #")
-            print("# 4. Delete patient ID                                       #")
-            print("# 5. List all patients                                       #")
-            print("# 6. Go back to main menu                                    #")
-            print("# 7. Exit                                                    #")
+            print("# a. Register a new patient                                  #")
+            print("# b. Retrieve patient ID                                     #")
+            print("# c. Update patient name (ID change NOT permitted)           #")
+            print("# d. Delete patient ID                                       #")
+            print("# e. List all patients                                       #")
+            print("# f. Go back to main menu                                    #")
+            print("# g. Exit                                                    #")
             print("#                                                            #")
             print("##############################################################")
             print("")
@@ -43,9 +43,9 @@ class Main:
 
             choice = input("Enter your choice: ")
             print("")
-            choices = ["1", "2", "3","4","5","6","7"]
+            choices = ["a", "b", "c","d","e","f","g"]
             #Not a fan or if else chains but for simplicity will use one here if i add a real GUI i will use a click listener instead
-            if choice == "1":
+            if choice == "a":
                 self.name = input("Enter new patient's name: ").title()
 
                 id_generated= self.registry.register_patient(self.name)
@@ -57,7 +57,7 @@ class Main:
                 print("")
                 print("Returning to application menu")
 
-            elif choice == "2":
+            elif choice == "b":
                 print("")
                 self.patient_id = input("Enter patient ID to retrieve patient data (Starts with 'P-'): ")
                 self.patient_id = self.patient_id.upper()
@@ -80,7 +80,7 @@ class Main:
                 print("Returning to application menu")
 
 
-            elif choice == "3":
+            elif choice == "c":
                 print("")
                 self.patient_id= input("Enter patient ID to update patient name (Starts with 'P-'): ")
                 self.patient_id = self.patient_id.upper()
@@ -115,7 +115,7 @@ class Main:
                 print("Returning to application menu")
                 print("")
 
-            elif choice == "4":
+            elif choice == "d":
                 print("")
                 self.patient_id= input("Enter patient ID to delete patient record (Starts with 'P-'): ")
                 self.patient_id = self.patient_id.upper()
@@ -148,7 +148,7 @@ class Main:
                 print("Returning to application menu")
 
 
-            elif choice == "5":
+            elif choice == "e":
 
                 all_patients = self.registry.list_all_patients()
                 if all_patients is None:
@@ -174,19 +174,26 @@ class Main:
                 print("Returning to Application menu")
 
 
-            elif choice == "6":
+            elif choice == "f":
                 print("")
                 print("Returning to main menu")
                 app_menu_running = False
 
-            elif choice == "7":
+            elif choice == "g":
 
                 self.running = False
                 app_menu_running = False
 
+                print("")
+                print("")
+                print("")
+                print("#####################################")
+                print("Thank you for using our Simple Patient Record System!")
+                print("Goodbye!")
+
             else:
                 print("")
-                print("Please enter a valid choice: Single digit from 1 to 7")
+                print("Please enter a valid choice: Single character between from a and g (do not include the . )")
                 print("")
 
 
