@@ -4,7 +4,7 @@
 #Class that will handle all of our menu logic and input validations
 
 
-from PatientRegistry import PatientRegistry
+from patient_registry import PatientRegistry
 
 
 class Main:
