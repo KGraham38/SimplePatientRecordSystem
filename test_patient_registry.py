@@ -3,6 +3,8 @@
 #Simple Patient Record System - Test Class
 #Class to test our Simple Patient Record System
 
+#Developer notes:
+#Using unittest the process in each check is very clear so really do not need comments throughout like I usually add
 #Ive never used either recommended testing frameworks, unittest is built in so Ill just use it
 
 import unittest
