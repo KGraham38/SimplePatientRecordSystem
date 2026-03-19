@@ -88,5 +88,40 @@ class PatientRegistryTest(unittest.TestCase):
         self.assertTrue(deleted_patient)
         self.assertIsNone(patient_record)
 
+    #Tests: Extra because i have helpers for listing and getting patients and only have 79% coverage
+    #Unit Test UT-07: list patients full check
+    def test_patient_list(self):
+        patient_1 = self.patient_registry.register_patient("Jane Doe")
+        patient_2 = self.patient_registry.register_patient("John Smith")
+
+        all_patients= self.patient_registry.list_all_patients()
+
+        self.assertIsNotNone(all_patients)
+        self.assertEqual(len(all_patients), 2)
+        self.assertIn({"patient_id": patient_1, "name": "Jane Doe"}, all_patients)
+        self.assertIn({"patient_id": patient_2, "name": "John Smith"}, all_patients)
+
+    #Unit Test UT-08: list patients empty check
+    def test_patient_list_empty(self):
+        all_patients = self.patient_registry.list_all_patients()
+        self.assertIsNone(all_patients)
+
+    #Unit Test UT-09: valid get patient check
+    def test_get_patient_val(self):
+        patient_id = self.patient_registry.register_patient("Jane Doe")
+        name = self.patient_registry.get_patient_name(patient_id)
+        self.assertIsNotNone(name)
+        self.assertEqual(name, "Jane Doe")
+
+
+    #Unit Test UT-10: invalid get patient check
+    def test_get_patient_invalid(self):
+
+        patient_name = self.patient_registry.get_patient_name("P-000")
+        self.assertIsNone(patient_name)
+
+
+
+
 if __name__ == '__main__':
     unittest.main()

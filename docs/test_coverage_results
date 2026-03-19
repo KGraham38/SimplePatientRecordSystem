@@ -1,0 +1,8 @@
+(.venv) PS C:\Users\KodyD\PycharmProjects\SimplePatientRecordSystem> python -m coverage report -m
+Name                       Stmts   Miss  Cover   Missing
+--------------------------------------------------------
+patient_registry.py           33      0   100%
+test_patient_registry.py      67      1    99%   124
+--------------------------------------------------------
+TOTAL                        100      1    99%
+(.venv) PS C:\Users\KodyD\PycharmProjects\SimplePatientRecordSystem>
