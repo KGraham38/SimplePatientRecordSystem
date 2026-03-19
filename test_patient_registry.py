@@ -36,6 +36,7 @@ class PatientRegistryTest(unittest.TestCase):
     #Tests: REQ-03 & REQ-04 - Immutability & Retrieval
     #Unit Test UT-04: Update patient name, ID not change
 
+
     #Tests: REQ-04 - Update
     #Unit Test UT-05: Invalid Update
 
@@ -47,6 +48,13 @@ class PatientRegistryTest(unittest.TestCase):
 
     #Tests: REQ-1, REQ-2, & REQ-5
     #Component Test CT-02: delete and retrieve fail flow
+    def test_patient_delete_retrival_failure_flow(self):
+        patient_id = self.patient_registry.register_patient("Jo Johnson")
+        deleted_patient = self.patient_registry.delete_patient(patient_id)
+        patient_record = self.patient_registry.get_patient(patient_id)
+
+        self.assertTrue(deleted_patient)
+        self.assertIsNone(patient_record)
 
 if __name__ == '__main__':
     unittest.main()
