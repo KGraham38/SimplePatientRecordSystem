@@ -39,16 +39,41 @@ class PatientRegistryTest(unittest.TestCase):
 
     #Tests: REQ-04 - Update
     #Unit Test UT-05: Invalid Update
+    def test_invalid_update(self):
+
+        patient_update = self.patient_registry.update_patient_name("P-000","John Smith")
+        self.assertIsNone(patient_update)
 
     #Tests: REQ-05 - Deletion
     #Unit Test UT-06: Valid and invalid delete
+    def test_valid_invalid_del(self):
+
+        patient_id = self.patient_registry.register_patient("Delete Check")
+        deleted_patient = self.patient_registry.delete_patient(patient_id)
+        self.assertIsNone(deleted_patient)
+        self.assertIsNone(self.patient_registry.patient_registry[patient_id])
+
+        deleted_id = self.patient_registry.delete_patient("P-000")
+        self.assertFalse(deleted_id)
 
     #Tests: REQ-1, REQ-2, REQ-3, & REQ-4
     #Component Test CT-01: valid workflow
+    def test_register_update_retrival_flow(self):
+
+        patient_id = self.patient_registry.register_patient("Jane Doe")
+        self.patient_registry.update_patient_name(patient_id, "Jane Smith")
+        patient_record = self.patient_registry.get_patient(patient_id)
+
+
+        self.assertIsNotNone(patient_record)
+        self.assertEqual(patient_record["name"], "Jane Smith")
+        self.assertEqual(patient_record["patient_id"], patient_id)
+
 
     #Tests: REQ-1, REQ-2, & REQ-5
     #Component Test CT-02: delete and retrieve fail flow
     def test_patient_delete_retrival_failure_flow(self):
+
         patient_id = self.patient_registry.register_patient("Jo Johnson")
         deleted_patient = self.patient_registry.delete_patient(patient_id)
         patient_record = self.patient_registry.get_patient(patient_id)
