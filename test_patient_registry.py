@@ -4,6 +4,7 @@
 #Class to test our Simple Patient Record System
 
 #Ive never used either recommended testing frameworks, unittest is built in so Ill just use it
+
 import unittest
 from patient_registry import PatientRegistry
 
@@ -35,6 +36,12 @@ class PatientRegistryTest(unittest.TestCase):
 
     #Tests: REQ-03 & REQ-04 - Immutability & Retrieval
     #Unit Test UT-04: Update patient name, ID not change
+    def test_id_not_changed_during_update(self):
+        patient_id = self.patient_registry.register_patient("John Smith")
+        updated_record = self.patient_registry.update_patient_name(patient_id, "Jim Smith")
+        self.assertIsNotNone(updated_record)
+        self.assertEqual(updated_record["name"], "Jim Smith")
+        self.assertEqual(updated_record["patient_id"], patient_id)
 
 
     #Tests: REQ-04 - Update
@@ -50,8 +57,8 @@ class PatientRegistryTest(unittest.TestCase):
 
         patient_id = self.patient_registry.register_patient("Delete Check")
         deleted_patient = self.patient_registry.delete_patient(patient_id)
-        self.assertIsNone(deleted_patient)
-        self.assertIsNone(self.patient_registry.patient_registry[patient_id])
+        self.assertTrue(deleted_patient)
+        self.assertIsNone(self.patient_registry.get_patient(patient_id))
 
         deleted_id = self.patient_registry.delete_patient("P-000")
         self.assertFalse(deleted_id)
