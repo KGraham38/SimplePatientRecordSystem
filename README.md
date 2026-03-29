@@ -12,6 +12,7 @@
 ### |
 ### |--- main.py
 ### |--- patient_registry.py
+### |--- test_patient_registry.py
 ### |--- README.md
 
 ## main.py
@@ -40,6 +41,17 @@ Handles:
 - REQ-4 - ***Update Patient Name*** 
 - REQ-5 - ***Delete Patient Record*** 
 
+## test_patient_registry.py
+Handles:
+- All of our unit tests
+- All of our component tests
+
+# Our Required Tests
+- REQ-01 (Creation): Test that register_patient(name: str) successfully generates a unique ID (e.g., P-101) and stores the patient.
+- REQ-02 (Retrieval): Test that get_patient(patient_id: str) retrieves the correct dictionary record.
+- REQ-03 (Immutability): Test that the Patient ID cannot be modified once assigned.
+- REQ-04 (Update): Test that update_patient_name changes the patient's name but keeps the ID unchanged.
+- REQ-05 (Deletion): Test that delete_patient(patient_id: str) successfully removes the record.
   
 # How to Run
 
