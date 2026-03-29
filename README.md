@@ -20,7 +20,7 @@ Handles:
 - UI
 - Menu Navigation
 - Input validation (indirectly on patient registry data)
-- Call my Patient Registry functions
+- Call my PatientRegistry methods
 
 
 ## patient_registry.py
